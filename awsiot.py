@@ -42,11 +42,15 @@ def ptCallback(client, userdata,message):
     logger.debug("ptCallback "+str(userdata));
     logger.debug("ptCallback "+str(message.payload));
     pload=json.loads(message.payload);
-    logger.debug(pload['tilt']);
-    logger.debug(pload['pan']);
-    stand.pan(pload['pan']);
-    stand.tilt(pload['tilt']);
-    logger.debug(json.loads(message.payload));
+    logger.debug(pload);
+    if 'tilt' in pload:
+        logger.debug(pload['tilt']);
+        stand.tilt(pload['tilt']);
+
+    if 'pan' in pload:
+        logger.debug(pload['pan']);
+        stand.pan(pload['pan']);
+
 
 
 
